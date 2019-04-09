@@ -179,6 +179,7 @@ nodes2digraph nodes = Digraph "d" labels links
   where
     labels = map (\ (b,i,_) -> (i,showBlock b)) nodes
     links  = map (\ (_,i,is) -> (i,is)) nodes
+    
     showBlock :: Block -> String
     showBlock = foldr (\ b bs -> show b ++ "\n" ++ bs) ""
 --

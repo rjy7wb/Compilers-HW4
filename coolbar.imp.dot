@@ -8,7 +8,7 @@ mov R1 #0
 sub R2 Rx R1
 brnz R2 #3
 "]
-5 [label="mov R2 #0
+8 [label="mov R2 #0
 jmp #4
 "]
 3 [label="3:
@@ -17,7 +17,7 @@ mov R2 #1
 4 [label="4:
 brz R2 #2
 "]
-6 [label="mov R3 #1
+9 [label="mov R3 #1
 sub R4 Rx R3
 mov Rx R4
 jmp #1
@@ -25,10 +25,17 @@ jmp #1
 2 [label="2:
 mov R5 #77
 mov Ry R5
-add R6 Rx Ry
+mov R16 #2
+equal R17 Rx R16
+brz R17 #6
+"]
+10 [label="add R6 Rx Ry
 add R7 Rx Ry
 mul R8 R6 R7
 mov Rz R8
+jmp #7
+"]
+6 [label="6:
 mul R9 Rx Rx
 mov R10 #2
 mul R11 R10 Rx
@@ -37,13 +44,18 @@ add R13 R9 R12
 mul R14 Ry Ry
 add R15 R13 R14
 mov Rz1 R15
+"]
+7 [label="7:
 exit
 "]
 0 -> { 1 }
-1 -> { 3 5 }
-5 -> { 4 }
+1 -> { 3 8 }
+8 -> { 4 }
 3 -> { 4 }
-4 -> { 2 6 }
-6 -> { 1 }
-2 -> { }
+4 -> { 2 9 }
+9 -> { 1 }
+2 -> { 6 10 }
+10 -> { 7 }
+6 -> { 7 }
+7 -> { }
 }
