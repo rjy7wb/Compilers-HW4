@@ -1,0 +1,35 @@
+digraph d {
+0 [label="0:
+mov R0 #99
+mov Rx R0
+"]
+1 [label="1:
+mov R1 #0
+sub R2 Rx R1
+brnz R2 #3
+"]
+5 [label="mov R2 #0
+jmp #4
+"]
+3 [label="3:
+mov R2 #1
+"]
+4 [label="4:
+brz R2 #2
+"]
+6 [label="mov R3 #1
+sub R4 Rx R3
+mov Rx R4
+jmp #1
+"]
+2 [label="2:
+exit
+"]
+0 -> { 1 }
+1 -> { 3 5 }
+5 -> { 4 }
+3 -> { 4 }
+4 -> { 2 6 }
+6 -> { 1 }
+2 -> { }
+}

@@ -1,0 +1,6 @@
+digraph d {
+1 [label="Hello"]
+2 [label="World"]
+3 [label="Everyone"]
+1 -> { 2 3 }
+}
